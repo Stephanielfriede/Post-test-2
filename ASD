@@ -1,0 +1,74 @@
+print("""
+==================================================================================================================
+|                                         Stephanie Elfriede Ginting                                             | 
+|                                                  2209116037                                                    | 
+==================================================================================================================
+
+""")
+
+def searching(r, e, n): 
+    FiboB = 0 
+    FiboA = 1 
+    Fibonacci = FiboB + FiboA 
+    while (Fibonacci < n):
+        FiboB = FiboA
+        FiboA = Fibonacci
+        Fibonacci = FiboB + FiboA
+    offset = -1
+    while (Fibonacci > 1):
+        i = min(offset+FiboB, n-1)
+        if (r[i] < e):
+            Fibonacci = FiboA
+            FiboA = FiboB
+            FiboB = Fibonacci - FiboA
+            offset = i
+        elif (r[i] > e):
+            Fibonacci = FiboB
+            FiboA = FiboA - FiboB   
+            FiboB = Fibonacci - FiboA
+        else:
+            return i
+    if(FiboA and r[n-1] == e):
+        return n-1
+    return -1
+
+
+def cari():
+    print("Hasil cari adalah: ")
+    for y in range(len(Nama)):
+        if isinstance(Nama[y], list):
+            r = searching(Nama[y], e ,len(Nama[y]))
+            if Nama[y][r] == e:
+                print(Nama[y][r], f"berada di index  ke ",y,"dan kolom",r)
+                print("----------------------------------------")
+        else:
+            if Nama[y] == e:
+                print(e,"berada di index ke ",y)
+                print("-----------------------------")
+
+Nama = ["Arsel", "Avivah", "Daiva", ["Wahyu", "Wibi"]]
+
+
+
+e = "Arsel"
+cari()
+
+
+e = "Avivah"
+cari()
+
+
+e = "Daiva"
+cari()
+
+
+e = "Wahyu"
+cari()
+
+
+e = "Wibi"
+cari()
+
+
+
+
